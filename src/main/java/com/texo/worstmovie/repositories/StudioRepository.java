@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Collection;
 
 @Repository
-public interface ProducerRepository extends JpaRepository<Producer, Long> {
-    Collection<Producer> findAllByNameIn(Collection<String> names);
+public interface StudioRepository extends JpaRepository<Studio, Long> {
+    Collection<Studio> findAllByNameIn(Collection<String> names);
 }
