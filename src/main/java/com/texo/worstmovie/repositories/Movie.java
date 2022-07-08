@@ -10,7 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import java.util.Collection;
 
 @Entity
 public class Movie {
@@ -24,18 +26,34 @@ public class Movie {
     @Column(name = "release_year")
     private Integer year;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name= "producer_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
-    private Producer producer;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "movie_producer",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "producer_id"))
+    private Collection<Producer> producers;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "movie_studio",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "studio_id"))
+    private Collection<Studio> studios;
+    @Column(name = "won_awards")
+    private Boolean wonAwards;
 
     protected Movie() {
     }
 
-    public Movie(String title, Integer year, Producer producer) {
+    public Movie(final String title,
+                 final Integer year,
+                 final Boolean wonAwards,
+                 final Collection<Producer> producers,
+                 final Collection<Studio> studios) {
         this();
         this.title = title;
         this.year = year;
-        this.producer = producer;
+        this.producers = producers;
+        this.wonAwards = wonAwards;
+        this.studios = studios;
     }
 
     public Long getId() {
@@ -50,8 +68,16 @@ public class Movie {
         return year;
     }
 
-    public Producer getProducer() {
-        return producer;
+    public Collection<Producer> getProducers() {
+        return producers;
+    }
+
+    public Collection<Studio> getStudios() {
+        return studios;
+    }
+
+    public Boolean getWonAwards() {
+        return wonAwards;
     }
 
     @Override
