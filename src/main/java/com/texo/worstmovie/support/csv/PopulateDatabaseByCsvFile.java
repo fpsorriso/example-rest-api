@@ -2,8 +2,8 @@ package com.texo.worstmovie.support.csv;
 
 import com.opencsv.bean.CsvToBeanBuilder;
 import com.opencsv.bean.HeaderColumnNameMappingStrategy;
-import com.texo.worstmovie.repositories.Movie;
-import com.texo.worstmovie.repositories.MovieRepository;
+import com.texo.worstmovie.interfacesadapters.repositories.Movie;
+import com.texo.worstmovie.interfacesadapters.repositories.MovieRepository;
 import com.texo.worstmovie.support.csv.dtos.CsvInitDataModel;
 import com.texo.worstmovie.support.csv.services.ProducerService;
 import com.texo.worstmovie.support.csv.services.StudioService;

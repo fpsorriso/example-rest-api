@@ -1,4 +1,4 @@
-package com.texo.worstmovie.repositories;
+package com.texo.worstmovie.interfacesadapters.repositories;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -9,31 +9,22 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Producer {
+public class Studio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
 
-    protected Producer() {
+    protected Studio() {
     }
 
-    public Producer(String name) {
-        this();
+    public Studio(String name) {
         this.name = name;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) {
             return true;
         }
@@ -42,13 +33,21 @@ public class Producer {
             return false;
         }
 
-        Producer producer = (Producer) o;
+        final Studio studio = (Studio) o;
 
-        return new EqualsBuilder().append(getId(), producer.getId()).isEquals();
+        return new EqualsBuilder().append(getId(), studio.getId()).isEquals();
     }
 
     @Override
     public int hashCode() {
         return new HashCodeBuilder(17, 37).append(getId()).toHashCode();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
     }
 }
