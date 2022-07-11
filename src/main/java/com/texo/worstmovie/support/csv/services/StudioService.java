@@ -1,8 +1,8 @@
 package com.texo.worstmovie.support.csv.services;
 
 import com.texo.worstmovie.support.CustomPredicate;
-import com.texo.worstmovie.repositories.Studio;
-import com.texo.worstmovie.repositories.StudioRepository;
+import com.texo.worstmovie.interfacesadapters.repositories.Studio;
+import com.texo.worstmovie.interfacesadapters.repositories.StudioRepository;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;

@@ -1,4 +1,4 @@
-package com.texo.worstmovie.repositories;
+package com.texo.worstmovie.interfacesadapters.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

@@ -1,4 +1,4 @@
-package com.texo.worstmovie.repositories;
+package com.texo.worstmovie.interfacesadapters.repositories;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -76,7 +76,7 @@ public class Movie {
         return studios;
     }
 
-    public Boolean getWonAwards() {
+    public Boolean hasWonAwards() {
         return wonAwards;
     }
 

@@ -1,6 +1,6 @@
 package com.texo.worstmovie.support.csv.services;
 
-import com.texo.worstmovie.repositories.Movie;
+import com.texo.worstmovie.interfacesadapters.repositories.Movie;
 import com.texo.worstmovie.support.csv.dtos.CsvInitDataModel;
 import org.springframework.stereotype.Component;
 
