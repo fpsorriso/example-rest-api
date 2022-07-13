@@ -23,3 +23,8 @@ This application run using Apache Maven embedded, so you can run in root directo
 By default, the H2 Console open in `localhost:8080/h2-console` 
 but you can change this value run the application.
 The property name is **H2_CONSOLE_PATH**
+
+# Technical Reference
+- [OpenCSV documentation](https://opencsv.sourceforge.net/#reading_into_beans)
+- [H2 With Spring boot](https://www.baeldung.com/spring-boot-h2-database)
+
