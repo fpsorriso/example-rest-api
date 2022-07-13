@@ -12,14 +12,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 @Service
 public class ConsecutiveAwardsFactoryImpl implements ConsecutiveAwardsFactory {
 
-    private final Function<Map.Entry<String, Collection<Movie>>, ConsecutiveAward> mapToConsecutiveAward;
+    private final Function<Map.Entry<String, Collection<Movie>>, Collection<ConsecutiveAward>> mapToConsecutiveAward;
 
-    public ConsecutiveAwardsFactoryImpl(final Function<Map.Entry<String, Collection<Movie>>, ConsecutiveAward> mapToConsecutiveAward) {
+    public ConsecutiveAwardsFactoryImpl(final Function<Map.Entry<String, Collection<Movie>>, Collection<ConsecutiveAward>> mapToConsecutiveAward) {
         this.mapToConsecutiveAward = mapToConsecutiveAward;
     }
 
@@ -33,8 +32,8 @@ public class ConsecutiveAwardsFactoryImpl implements ConsecutiveAwardsFactory {
 
         return mapMovieByProducer.entrySet().stream()
                                  .map(mapToConsecutiveAward)
-                                 .filter(Objects::nonNull)
-                                 .collect(Collectors.toList());
+                                 .flatMap(Collection::stream)
+                                 .toList();
     }
 
     private Map<String, Collection<Movie>> mapMovieByProducer(final Collection<Movie> movies) {
